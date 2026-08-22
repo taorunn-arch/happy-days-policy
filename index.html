@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>happy_days – 日本の魅力を世界へ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red:    #C0392B;
+      --gold:   #D4A017;
+      --ink:    #1A1A1A;
+      --mist:   #F7F4EF;
+      --white:  #FFFFFF;
+      --gray:   #6B6B6B;
+    }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: var(--mist);
+      color: var(--ink);
+      line-height: 1.7;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--ink);
+      padding: 18px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      color: var(--white);
+      font-size: 1.5rem;
+      letter-spacing: 0.04em;
+    }
+    .logo span { color: var(--gold); }
+    nav a {
+      color: #ccc;
+      text-decoration: none;
+      margin-left: 28px;
+      font-size: 0.85rem;
+      letter-spacing: 0.06em;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--white); }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--ink);
+      color: var(--white);
+      padding: 100px 40px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 60% 40%, rgba(192,57,43,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--gold);
+    }
+    .hero p {
+      max-width: 560px;
+      margin: 0 auto 36px;
+      color: #ccc;
+      font-size: 1rem;
+    }
+    .btn {
+      display: inline-block;
+      background: var(--red);
+      color: var(--white);
+      padding: 14px 36px;
+      border-radius: 2px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      letter-spacing: 0.06em;
+      transition: background 0.2s;
+    }
+    .btn:hover { background: #a93226; }
+
+    /* ── SECTION BASE ── */
+    section { padding: 80px 40px; }
+    .section-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 10px;
+    }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      margin-bottom: 16px;
+    }
+    .lead {
+      color: var(--gray);
+      max-width: 600px;
+      margin-bottom: 48px;
+    }
+
+    /* ── ABOUT ── */
+    .about { background: var(--white); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      max-width: 900px;
+    }
+    .about-grid p { color: var(--gray); }
+
+    /* ── CHANNELS ── */
+    .channels { background: var(--mist); }
+    .channel-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 24px;
+      max-width: 960px;
+    }
+    .channel-card {
+      background: var(--white);
+      border-top: 3px solid var(--red);
+      padding: 28px 24px;
+    }
+    .channel-card .icon { font-size: 1.8rem; margin-bottom: 12px; }
+    .channel-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+    .channel-card p { font-size: 0.88rem; color: var(--gray); }
+
+    /* ── PLATFORMS ── */
+    .platforms { background: var(--ink); color: var(--white); text-align: center; }
+    .platforms h2 { color: var(--white); }
+    .platforms .lead { color: #aaa; margin: 0 auto 48px; }
+    .platform-list {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .platform-badge {
+      border: 1px solid #444;
+      padding: 10px 24px;
+      border-radius: 2px;
+      font-size: 0.85rem;
+      letter-spacing: 0.06em;
+      color: #ddd;
+    }
+
+    /* ── CONTACT ── */
+    .contact { background: var(--white); }
+    .contact-box {
+      background: var(--mist);
+      border-left: 4px solid var(--gold);
+      padding: 32px 36px;
+      max-width: 560px;
+    }
+    .contact-box p { color: var(--gray); margin-bottom: 8px; }
+    .contact-box a { color: var(--red); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      color: #666;
+      padding: 28px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    footer a { color: #999; text-decoration: none; margin-left: 20px; }
+    footer a:hover { color: var(--white); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      header { padding: 16px 20px; }
+      nav { display: none; }
+      .hero { padding: 70px 20px 60px; }
+      section { padding: 60px 20px; }
+      .about-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; text-align: center; }
+      footer a { margin-left: 10px; }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .channel-card { transition: transform 0.2s, box-shadow 0.2s; }
+      .channel-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo">happy<span>_days</span></div>
+  <nav>
+    <a href="#about">サービスについて</a>
+    <a href="#channels">コンテンツ</a>
+    <a href="#contact">お問い合わせ</a>
+    <a href="privacy.html">プライバシーポリシー</a>
+    <a href="terms.html">利用規約</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-eyebrow">Japan Content Creator</p>
+  <h1>日本の魅力を、<em>世界へ届ける。</em></h1>
+  <p>happy_days は、日本各地の観光・文化・自然・食をテーマに、
+     YouTube・TikTok・Instagram などへ動画コンテンツを発信するクリエイターサービスです。</p>
+  <a href="#channels" class="btn">コンテンツを見る</a>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <p class="section-label">About</p>
+  <h2>happy_days とは</h2>
+  <p class="lead">日本各地の魅力・熊本の復興応援・花言葉・音楽クイズなど、多彩なテーマで毎日動画を制作・配信しています。</p>
+  <div class="about-grid">
+    <p>日本国内の観光スポット・文化・食・歴史をわかりやすく紹介するショート動画を、YouTube Shorts・TikTok・Instagram Reels などのプラットフォームに毎日投稿しています。</p>
+    <p>TikTok の Content Posting API を活用し、制作した動画を自動的に投稿・管理します。視聴者の皆さんに日本の魅力をより多く、より早くお届けすることを目指しています。</p>
+  </div>
+</section>
+
+<!-- CHANNELS -->
+<section class="channels" id="channels">
+  <p class="section-label">Content</p>
+  <h2>配信コンテンツ</h2>
+  <p class="lead">現在、以下のテーマで動画を制作・投稿しています。</p>
+  <div class="channel-grid">
+    <div class="channel-card">
+      <div class="icon">🗾</div>
+      <h3>日本各地めぐり</h3>
+      <p>都道府県・市区町村ごとの観光スポット・グルメ・文化を紹介するショート動画。</p>
+    </div>
+    <div class="channel-card">
+      <div class="icon">🌐</div>
+      <h3>Japan Tour (English)</h3>
+      <p>Introducing Japan's sightseeing spots and culture in English for international viewers.</p>
+    </div>
+    <div class="channel-card">
+      <div class="icon">🌸</div>
+      <h3>花言葉</h3>
+      <p>日本の花とその花言葉、由来・逸話をやさしく解説するコンテンツ。</p>
+    </div>
+    <div class="channel-card">
+      <div class="icon">🎵</div>
+      <h3>曲当てクイズ</h3>
+      <p>歌詞を使わず、情景画像だけで曲名を当てる音楽クイズ動画。</p>
+    </div>
+    <div class="channel-card">
+      <div class="icon">👹</div>
+      <h3>闇図鑑</h3>
+      <p>日本・世界の妖怪・UMA・神話上の存在を紹介する怪異系コンテンツ。</p>
+    </div>
+    <div class="channel-card">
+      <div class="icon">❤️</div>
+      <h3>熊本がんばれ</h3>
+      <p>熊本県の魅力と復興を応援するシリーズ。観光・方言クイズなど多彩なコンテンツ。</p>
+    </div>
+  </div>
+</section>
+
+<!-- PLATFORMS -->
+<section class="platforms">
+  <p class="section-label" style="color: var(--gold);">Platforms</p>
+  <h2>配信プラットフォーム</h2>
+  <p class="lead">以下のプラットフォームで動画を配信しています。</p>
+  <div class="platform-list">
+    <div class="platform-badge">YouTube Shorts</div>
+    <div class="platform-badge">TikTok</div>
+    <div class="platform-badge">Instagram Reels</div>
+    <div class="platform-badge">X (Twitter)</div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <p class="section-label">Contact</p>
+  <h2>お問い合わせ</h2>
+  <p class="lead">サービスに関するご質問・ご要望はメールにてお受けしています。</p>
+  <div class="contact-box">
+    <p><strong>運営者</strong></p>
+    <p>happy_days コンテンツ制作チーム</p>
+    <p style="margin-top: 16px;"><strong>メール</strong></p>
+    <p><a href="mailto:damataorunn@gmail.com">damataorunn@gmail.com</a></p>
+    <p style="margin-top: 16px; font-size: 0.85rem;">お問い合わせには数日以内にご返信いたします。</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>© 2026 happy_days. All rights reserved.</div>
+  <div>
+    <a href="privacy.html">プライバシーポリシー</a>
+    <a href="terms.html">利用規約</a>
+  </div>
+</footer>
+
+</body>
+</html>
